@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.stApp {
+    background-color: #0d0d0d;
+    color: #ffffff;
+     font-family: 'Segoe UI', sans-serif;
+}
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
+.title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #F5A623;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #aaaaaa;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.stTextArea textarea {
+    background-color:  #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.stTextArea textarea:focus {
+    border-color: #F5A623;
+    box-shadow: 0 0 0 2px rgba(245, 166, 35, 0.2);
+}
+
+/* ===== DROPDOWN ===== */
+.stSelectbox div {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #333333;
+}
+/* ===== BUTTON ===== */
+.stButton button {
+    background-color: #F5A623;
+    color: #000000;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    padding: 0.6rem 2rem;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.stButton button:hover {
+    background-color: #f7b84b;
+    transform: scale(1.02);
+}
+
+/* ===== MOOD BADGE ===== */
+.mood-badge {
+    background-color: #F5A623;
+    color: #000000;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== SONG CARDS ===== */
+.song-card {
+    background-color: #1a1a1a;
+    border-left: 4px solid #F5A623;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+}
+.song-card:hover {
+    transform: translateX(6px);
+}
+
+.song-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #F5A623;
+}
+
+.song-artist {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    margin-top: 2px;
+}
+
+.song-reason {
+    font-size: 0.9rem;
+    color: #dddddd;
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+/* ===== DJ MODE CARDS ===== */
+.dj-card {
+    background-color: #1a1a1a;
+    border: 1px solid #F5A623;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.dj-phase {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #F5A623;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+/* ===== MOOD HISTORY ===== */
+.history-item {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: #aaaaaa;
+}
