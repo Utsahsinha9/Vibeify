@@ -20,6 +20,8 @@ Vibeify analyzes natural language mood input and curates emotionally aligned mus
 
 ## 🏗️ Architecture
 
+````text
+
                 ┌──────────────────────┐
                 │   User Interface     │
                 │     (Streamlit)      │
@@ -37,18 +39,19 @@ Vibeify analyzes natural language mood input and curates emotionally aligned mus
         ┌───────────────┼────────────────┐
         ▼                                ▼
 
-┌───────────────┐ ┌──────────────────┐
-│ Groq API │ │ YouTube API │
-│ (LLaMA 3.3) │ │ (Video Search) │
-│ - Mood Detect │ │ - Song Videos │
-│ - Song Recs │ └──────────────────┘
+┌───────────────┐                ┌──────────────────┐
+│ Groq API      │                │ YouTube API      │
+│ (LLaMA 3.3)   │                │ (Video Search)   │
+│ - Mood Detect │                │ - Song Videos    │
+│ - Song Recs   │                └──────────────────┘
 └───────────────┘
-│
-▼
+        │
+        ▼
 ┌──────────────────┐
-│ iTunes API │
-│ - Album Artwork │
+│ iTunes API       │
+│ - Album Artwork  │
 └──────────────────┘
+```
 
 **Data Flow:**
 
@@ -85,7 +88,7 @@ vibeify/
 ```bash
    git clone https://github.com/Utsahsinha9/Vibeify.git
    cd Vibeify
-```
+````
 
 2. **Install dependencies:**
 
