@@ -1,9 +1,12 @@
 from dotenv import load_dotenv
 load_dotenv()
 from groq import Groq
+from googleapiclient.discovery import build
 import os
+import requests
 
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+youtube = build("youtube", "v3", developerKey= os.environ.get("YOUTUBE_API_KEY"))
 
 
 def get_mood_category(mood):
@@ -41,13 +44,16 @@ def get_recommendations(mood, language):
             {
                 "role": "user",
                 "content": f"""
-                The user is feeling: {mood}
-                Preferred language: {language}
+                The user shared this about how they feel or what happened: {mood}
+                Preferred language(s) for songs: {language}
+
+                IMPORTANT: You MUST recommend songs STRICTLY in these languages: {language}
+                Do NOT recommend songs in any other language unless no songs exist in {language}.
 
                 Think about what this person emotionally NEEDS right now, not just what they said.
                 For example: if someone feels anxious or restless, they need calming soothing songs.
-                If someone feels sad, recommend songs that comfort and validate their feelings.
-                If someone feels happy, recommend upbeat celebratory songs.
+                If someone feels sad or heartbroken, recommend songs that comfort and validate their feelings.
+                If someone feels happy or excited, recommend upbeat celebratory songs.
 
                 Recommend exactly 5 songs matching this emotional need and language preference.
 
@@ -92,6 +98,8 @@ def get_dj_playlist(mood, language):
                 The user is currently feeling: {mood}
                 Preferred language: {language}
 
+                IMPORTANT: Recommend songs STRICTLY in these languages: {language}
+
                 Act as a professional DJ who reads the room.
                 Create a 9-song progressive playlist in 3 phases:
 
@@ -121,8 +129,11 @@ def get_dj_playlist(mood, language):
             }
         ]
     )
-
     raw = response.choices[0].message.content.strip()
+    print(raw)
+
+
+     # This will show in your VS Code terminal
 
     playlist = {
         "phase1": {"label": "🎭 Phase 1 — Meet (where you are)", "songs": []},
@@ -151,3 +162,63 @@ def get_dj_playlist(mood, language):
                 })
 
     return playlist
+
+def get_youtube_video_id(song_name, artist_name):
+    """
+    Uses YouTube Data API to find the exact video ID for a song
+    Returns video ID string or None if not found
+    """    
+    try:
+        query = f"{song_name} {artist_name} official music video"
+
+        request = youtube.search().list(
+            part="snippet",
+            q=query,
+            type="video",
+            maxResults=1,
+            videoCategoryId="10"  # Music category
+        )
+        response = request.execute()
+
+        if response["items"]:
+            video_id = response["items"][0]["id"]["videoId"]
+            return video_id
+
+        return None
+    except Exception as e:
+        print(f"Youtube API Error: {e}")
+        return None
+
+def get_youtube_url(song_name, artist_name):
+    """
+    Gets exact Youtube video URL using the API
+    Falls back to search URL if API fails
+    """        
+
+    video_id = get_youtube_video_id(song_name, artist_name)
+    if video_id:
+        return f"https://www.youtube.com/watch?v={video_id}"
+    else:
+        # Fallback to search
+        query = f"{song_name} {artist_name} official music video".replace(" ", "+")
+        return f"https://www.youtube.com/results?search_query={query}"
+    
+def get_album_art(song_name, artist_name ):
+    """
+    Fetches album artwork from iTunes API
+    Returns artowrk URL or None if not found
+    """
+    try:
+        query = f"{song_name} {artist_name}"
+        url =    f"https://itunes.apple.com/search?term={query}&entity=song&limit=1"
+        response = requests.get(url, timeout=5)
+        data = response.json()
+
+
+        if data ["resultCount"] > 0:
+            artwork_url = data["results"][0].get("artworkUrl100")
+            if artwork_url:
+                return artwork_url.replace("100x100", "300x300")
+        return None
+    except : 
+        return None    

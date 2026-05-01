@@ -1,140 +1,433 @@
-* {
+.block-container {
+    max-width: 100% !important;
+    margin: auto;
+    padding-top: 2rem !important;
+}
+
+@media (max-width: 768px) {
+    .block-container {
+        max-width: 100% !important;
+        padding: 1rem !important;
+    }
+}
+
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 .stApp {
-    background-color: #0d0d0d;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 100%);
     color: #ffffff;
-     font-family: 'Segoe UI', sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
 }
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
 
 .title {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: #F5A623;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    font-size: 3.2rem;
+    font-weight: 900;
+
+    background: linear-gradient(90deg, #F5A623, #f7b84b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     margin-bottom: 0.3rem;
-    letter-spacing: -1px;
+    letter-spacing: -2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
+    animation: fadeIn 0.6s ease;
 }
 
+.logo-icon svg {
+    filter: drop-shadow(0 0 14px rgba(245, 166, 35, 0.6));
+}
+
+.title:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 40px rgba(245, 166, 35, 0.6),
+        0 0 80px rgba(245, 166, 35, 0.3);
+    letter-spacing: 0px;
+}
+
+.title:hover .logo-icon svg {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(245, 166, 35, 0.8));
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+ */
+/* ===== SUBTITLE ===== */
 .subtitle {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: #aaaaaa;
     text-align: center;
     margin-bottom: 2.5rem;
+    animation: fadeIn 0.8s ease 0.2s both;
 }
 
+
 .stTextArea textarea {
-    background-color:  #1a1a1a;
-    color: #ffffff;
-    border: 1px solid #333333;
-    border-radius: 12px;
-    font-size: 1rem;
-    padding: 1rem;
+    background-color: rgba(26, 26, 26, 0.6) !important;
+    color: #ffffff !important;
+    border: 1.5px solid #2a2a2a !important;
+    border-radius: 16px !important;
+    font-size: 1rem !important;
+    padding: 1.2rem !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease !important;
 }
 
 .stTextArea textarea:focus {
-    border-color: #F5A623;
-    box-shadow: 0 0 0 2px rgba(245, 166, 35, 0.2);
+    border-color: #F5A623 !important;
+    box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.15) !important;
+    background: rgba(26, 26, 26, 0.8) !important;
 }
+
+/* ===== TEXT INPUT ===== */
+.stTextInput input {
+    background: rgba(26, 26, 26, 0.6) !important;
+    color: #ffffff !important;
+    border: 1.5px solid #2a2a2a !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(10px);
+}
+
 
 /* ===== DROPDOWN ===== */
-.stSelectbox div {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #333333;
-}
-/* ===== BUTTON ===== */
-.stButton button {
-    background-color: #F5A623;
-    color: #000000;
-    font-weight: 700;
-    font-size: 1rem;
-    border: none;
-    border-radius: 25px;
-    padding: 0.6rem 2rem;
-    width: 100%;
-    transition: all 0.2s ease;
+.stMultiSelect>div {
+    background: rgba(26, 26, 26, 0.6) !important;
+    border-radius: 12px !important;
+    border: 1.5px solid #2a2a2a !important;
+    backdrop-filter: blur(10px);
 }
 
-.stButton button:hover {
-    background-color: #f7b84b;
-    transform: scale(1.02);
+/* ===== BUTTON ===== */
+.stButton>button {
+    background: linear-gradient(135deg, #F5A623 0%, #f7b84b 100%) !important;
+    color: #000000 !important;
+    font-weight: 800 !important;
+    font-size: 1.05rem !important;
+    border: none !important;
+    border-radius: 30px !important;
+    padding: 0.75rem 2rem !important;
+    width: 100% !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
+}
+
+.stButton>button:hover {
+    background: linear-gradient(135deg, #f7b84b 0%, #F5A623 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 25px rgba(245, 166, 35, 0.5) !important;
+}
+
+.shuffle-btn {
+    background: transparent !important;
+    border: 1.5px solid #333 !important;
+    color: #aaa !important;
+    padding: 6px 16px !important;
+    border-radius: 20px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+}
+
+.shuffle-btn:hover {
+    border-color: #F5A623 !important;
+    color: #F5A623 !important;
+    background: rgba(245, 166, 35, 0.1) !important;
+}
+
+
+
+/* ===== FEEDBACK BUTTONS — override main button style ===== */
+
+div[data-testid="column"] .stButton>button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1.5px solid rgba(245, 166, 35, 0.3) !important;
+    color: #F5A623 !important;
+
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 1.2rem !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="column"] .stButton>button:hover {
+    background: rgba(245, 166, 35, 0.15) !important;
+    border-color: #F5A623 !important;
+    color: #F5A623 !important;
+    transform: scale(1.15) !important;
 }
 
 /* ===== MOOD BADGE ===== */
 .mood-badge {
-    background-color: #F5A623;
+    background: linear-gradient(135deg, #F5A623 0%, #f7b84b 100%);
     color: #000000;
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 800;
     font-size: 0.9rem;
     display: inline-block;
     margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
+    animation: slideIn 0.5s ease;
 }
 
-/* ===== SONG CARDS ===== */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+/* ===== PREMIUM SONG CARDS ===== */
 .song-card {
-    background-color: #1a1a1a;
-    border-left: 4px solid #F5A623;
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(20, 20, 20, 0.8) 100%);
+    border: 1.5px solid #222;
+    border-radius: 16px;
+    padding: 1rem;
     margin-bottom: 1rem;
-    transition: transform 0.2s ease;
-}
-.song-card:hover {
-    transform: translateX(6px);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    animation: cardSlideIn 0.4s ease;
 }
 
-.song-title {
-    font-size: 1.1rem;
+.song-card:hover {
+    transform: translateX(8px);
+    border-color: #F5A623;
+    box-shadow: 0 4px 20px rgba(245, 166, 35, 0.2);
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(25, 25, 25, 0.9) 100%);
+}
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== ALBUM ART ===== */
+.album-art {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid #F5A623;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.album-art-placeholder {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    border: 2.5px solid #333;
+    flex-shrink: 0;
+}
+
+/* ===== SONG INFO ===== */
+.song-info-premium {
+    flex: 1;
+    min-width: 0;
+}
+
+.song-title-premium {
+    font-size: 1.05rem;
     font-weight: 700;
-    color: #F5A623;
+    color: #fff;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .song-artist {
-    font-size: 0.9rem;
-    color: #aaaaaa;
-    margin-top: 2px;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
 }
 
 .song-reason {
-    font-size: 0.9rem;
-    color: #dddddd;
-    margin-top: 6px;
-    line-height: 1.5;
+    font-size: 0.8rem;
+    color: #aaa;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ===== PLAY BUTTON ===== */
+.play-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #F5A623 0%, #f7b84b 100%);
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 10px rgba(245, 166, 35, 0.3);
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.play-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(245, 166, 35, 0.5);
+    text-decoration: none;
 }
 
 /* ===== DJ MODE CARDS ===== */
 .dj-card {
-    background-color: #1a1a1a;
-    border: 1px solid #F5A623;
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
-    margin-bottom: 0.8rem;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(20, 20, 20, 0.8) 100%);
+    border: 1.5px solid #333;
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    backdrop-filter: blur(10px);
+    animation: cardSlideIn 0.4s ease;
 }
 
-.dj-phase {
-    font-size: 0.8rem;
-    font-weight: 700;
+.dj-phase-label {
+    font-size: 0.7rem;
+    font-weight: 800;
     color: #F5A623;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
+    letter-spacing: 1.5px;
+    margin: 1.5rem 0 0.8rem;
+    padding-left: 4px;
 }
 
-/* ===== MOOD HISTORY ===== */
+/* SIDEBAR */
+
+section[data-testid="stSidebar"] {
+    min-width: 260px !important;
+    background: linear-gradient(180deg, #0d0d0d 0%, #141414 100%) !important;
+    border-right: 1px solid #222;
+
+
+}
+
 .history-item {
-    background-color: #1a1a1a;
-    border-radius: 8px;
-    padding: 0.6rem 1rem;
-    margin-bottom: 0.5rem;
+    background: rgba(26, 26, 26, 0.6);
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.6rem;
     font-size: 0.85rem;
-    color: #aaaaaa;
+    color: #aaa;
+    border-left: 3px solid #F5A623;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+}
+
+.history-item:hover {
+    background: rgba(30, 30, 30, 0.8);
+    transform: translateX(4px);
+}
+
+/* SPINNER */
+.stSpinner {
+    color: #F5A623 !important;
+}
+
+/* SUCCESS MESSAGES  */
+.stSuccess {
+    background-color: rgba(26, 42, 26, 0.8) !important;
+    border-color: #F5A623 !important;
+    backdrop-filter: blur(10px);
+}
+
+/*  ALIGN HEADER WITH CONTENT  */
+header[data-testid="stHeader"] {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 100%) !important;
+    border-bottom: 1px solid #222;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* inner container matches your .block-container */
+header[data-testid="stHeader"]>div {
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+/* move arrow slightly inward */
+button[kind="header"] {
+    margin-left: 0px !important;
+}
+
+.album-art {
+    transition: transform 2s ease;
+}
+
+.song-card:hover .album-art,
+.dj-card:hover .album-art {
+    transform: rotate(360deg);
 }
